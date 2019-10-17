@@ -1,6 +1,7 @@
 from api.mongodb import FundDB, MongoDB
 from api.morningstar import MorningStar
 from api.sina import SinaFund
+from config import DbConfig
 
 
 def get_fund():
@@ -20,7 +21,7 @@ def get_fund():
 
 
 def save_fund(data):
-    fundDB = FundDB('test', 'fund')
+    fundDB = FundDB(DbConfig.dbName, DbConfig.dbFundTable)
     fundDB.update_one_sync(data)
 
 
@@ -35,14 +36,15 @@ def update_stock_list():
     :return:
     """
 
-    fundDB = FundDB('test', 'fund')
+    fundDB = FundDB(DbConfig.dbName, DbConfig.dbFundTable)
     data = fundDB.find_fund_list(1)
     morningStar = MorningStar()
-    stockMongoDB = MongoDB('test', 'stock')
-    bondMongoDB = MongoDB('test', 'bond')
+    stockMongoDB = MongoDB(DbConfig.dbName, DbConfig.dbStockTable)
+    bondMongoDB = MongoDB(DbConfig.dbName, DbConfig.dbBondTable)
     bond_hold_data_list = []
     stock_hold_data_list = []
     for line in data:
+        print(line)
         fcid = morningStar.get_fund_fcid(line['symbol'])
         data = morningStar.get_fund_detail(fcid)
         fund_name = line['name']

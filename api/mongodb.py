@@ -23,7 +23,8 @@ class FundDB(MongoDB):
         super().__init__(db_name, collection_name)
 
     def find_fund_list(self, star):
-        query = {"starRating5y": {"$gte": f"{star}"}}
+        today = time.strftime("%Y-%m-%d", time.localtime())
+        query = {"starRating5y": {"$gte": f"{star}"}, "update_at": today}
         res = self.collection.find(query)
         return res
 
@@ -31,3 +32,9 @@ class FundDB(MongoDB):
 class StockDB(MongoDB):
     def __init__(self, db_name, collection_name) -> None:
         super().__init__(db_name, collection_name)
+
+    def find_list(self):
+        today = time.strftime("%Y-%m-%d", time.localtime())
+        query = {"update_at": today}
+        res = self.collection.find(query)
+        return res
