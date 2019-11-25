@@ -33,8 +33,11 @@ class StockDB(MongoDB):
     def __init__(self, db_name, collection_name) -> None:
         super().__init__(db_name, collection_name)
 
-    def find_list(self):
-        today = time.strftime("%Y-%m-%d", time.localtime())
+    def find_list(self, **kwargs):
+        if 'date' in kwargs:
+            today = kwargs['date']
+        else:
+            today = time.strftime("%Y-%m-%d", time.localtime())
         query = {"update_at": today}
         res = self.collection.find(query)
         return res
