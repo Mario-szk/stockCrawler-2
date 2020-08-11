@@ -33,7 +33,8 @@ class SinaFund(object):
         self.params["page"] = page
         response = requests.get(self.url, headers=self.headers, params=self.params, verify=False)
         response.encoding="gb2312"
-        data = response.text.split("((")[1].split("))")[0]
+        data = response.text
+        data = data.split('](')[1].split(");")[0]
         jsonData = demjson.decode(data)
         data = jsonData["data"]
         if data is not None:
