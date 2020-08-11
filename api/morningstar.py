@@ -1,15 +1,17 @@
 import json
 import time
 
+import requests
 from dateutil.parser import *
 
-import requests
+from config import MorningStar
 
 
 class MorningStar(object):
     def __init__(self) -> None:
         super().__init__()
         self.headers = {
+            'Cookie': MorningStar.cookie,
             'Connection': 'keep-alive',
             'Pragma': 'no-cache',
             'Cache-Control': 'no-cache',

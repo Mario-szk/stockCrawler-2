@@ -5,3 +5,5 @@ class DbConfig(object):
     dbStockTable = "stock"
     dbBondTable = "bond"
 
+class MorningStar(object):
+    cookie = ""
