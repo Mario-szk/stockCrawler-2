@@ -1,12 +1,10 @@
-import json
 import time
 
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
 
-from api.mongodb import MongoDB, StockDB
-from config import DbConfig
+from api.mongodb import StockDB
+from api.config import DbConfig
 
 
 class TopStock(object):

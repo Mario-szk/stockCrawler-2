@@ -1,7 +1,7 @@
 from api.mongodb import FundDB, MongoDB
 from api.morningstar import MorningStar
 from api.sina import SinaFund
-from config import DbConfig
+from api.config import DbConfig
 
 
 def get_fund():

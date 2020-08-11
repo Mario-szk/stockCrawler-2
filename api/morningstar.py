@@ -4,7 +4,7 @@ import time
 import requests
 from dateutil.parser import *
 
-from config import MorningStar
+from api.config import MorningStar
 
 
 class MorningStar(object):

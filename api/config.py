@@ -7,3 +7,4 @@ class DbConfig(object):
 
 class MorningStar(object):
     cookie = ""
+ 
