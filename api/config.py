@@ -6,5 +6,4 @@ class DbConfig(object):
     dbBondTable = "bond"
 
 class MorningStar(object):
-    cookie = ""
- 
+    cookie = "authWeb="

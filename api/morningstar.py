@@ -4,14 +4,14 @@ import time
 import requests
 from dateutil.parser import *
 
-from api.config import MorningStar
+from api.config import MorningStar as msconfig
 
 
 class MorningStar(object):
     def __init__(self) -> None:
         super().__init__()
         self.headers = {
-            'Cookie': MorningStar.cookie,
+            'Cookie': msconfig.cookie,
             'Connection': 'keep-alive',
             'Pragma': 'no-cache',
             'Cache-Control': 'no-cache',
